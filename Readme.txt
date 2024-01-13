@@ -16,3 +16,11 @@ Steps followed to commit on git
 5 - git commit -m 'add msg'  -- commit all the changes
 6 - git remote add origin <link>  -- Run only once of project to add reprosetory to project
 7 - git origin <branch name you created>
+
+
+Export and Imports
+Named Export and Default Export - 
+e.g Named Export - at start export const Name = () => {}   ----- To import Named export it will be import {Name} from .....
+---- For multiple component export from one file we use named export
+e.g Default Export - at end export default Name            ----- To import default export it eill br import Name from .....
+---- For single component export from one file we use default export
