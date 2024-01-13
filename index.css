@@ -24,6 +24,7 @@
     border-radius: 10%;
     box-shadow: 5px 5px 5px 5px gray;
     width: 250px;
+    cursor: pointer;
 }
 
 .card img{
@@ -41,4 +42,10 @@
 .restro_card{
     display: flex;
     flex-wrap: wrap;
+}
+
+.top_res_btn{
+    margin: 20px;
+    padding-left: 10px;
+    cursor: pointer;
 }
