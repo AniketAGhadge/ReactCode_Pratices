@@ -51,6 +51,10 @@ useEffect(()=>{console.log("Hello")})  -- If we don't add dependence array then 
 useEffect(()=>{console.log("Hello")}, [])  -- If we add empty array then it will only only on initial render
 useEffect(()=> {console.log("Hello")}, [btnClicked])  -- If we add anything in dependency array then it will call only on change in that dependency array variable
 
+useParam - 
+useParam hook we used to properties passed from the URL. from the useParam we will get a object which contain detils of URL.
+onClicke of resturant we creatre Link tag added to as URL and concatenate with resto id then in element we are catching id using useParam()
+
 We have two approach for render 
 1) Loads => API (wait for call) => Render
 2) Loads => render => API => re-render    --- Mostly we use this in react
@@ -80,13 +84,16 @@ e.g. const appRoute = createBrowserRouter([
         path: '/about',
         element: <PageName/>,
         errorElement: <ErrorPage/>
+    },
+    {
+        path: '/resturant/:resId'    ---dynamic URL /:resId will change for each resturant 
+        element: <RestroMeanu>
     }
 ])
 
 and for render we will import RouterProvider from react-router-dom
 
 root.render(<RouterProvider router={appRoute}/>)
-
 
 Outlet -
 we use Outlet from react-router-dom which will help to render only the container body and fixed the header i.e. we can achieve dynamic webpage by using Outlet
@@ -99,3 +106,39 @@ React is keeping all the track of link.
 Dynamic path - 
 For writing the dynamic path or URL we are using /: where we are getting value from URL and changing the data accordingly
 e.g. path: '/resturantMeanu/:resId'
+
+To make the header fix we add all the page in children element
+
+const appRouter = createBrowserRouter([
+    {
+        path: '/',
+        element: <AppLayout />,
+        children: [
+            {
+                path: '/',
+                element: <Body/>
+            },
+            {
+                path: '/about',
+                element:<About/>
+            },
+            {
+                path: '/contact',
+                element: <Contact/>
+            },
+            {
+                path: '/cart',
+                element: <Cart/>
+            },
+            {
+                path: '/resturant/:resId',
+                element: <ResturantMeanu/>
+            }
+        ]
+    }
+])
+
+Routing Types - 
+Routing are of two types 
+1) Client side Routing - It doesn't make any request.
+2) Server side routing - From the HTML it will fetch the URL and then it will render the frontend
