@@ -1,11 +1,9 @@
 Steps followed to create react App
-
 1 - Create index.html file
 2 - Create App.js file
 3 - Create index.css file
 4 - Run npm init   --- It will create package.json file
 5 - Run npm i -D parcel   --- It will install bundler and create package-lock.json file and node_module folder
-6 - 
 
 
 Steps followed to commit on git
@@ -40,10 +38,18 @@ e.g. <div> <h1> </h1> </div>
 
 In Reconcilation whenever state change react compare between the old Virtual DOM and new i.e. changed Virtual DOM and then it make changes in Actual DOM and It will render only the changed Component it doen't touch the unchanged components thats why react is fast
 
+useState - 
 For making changes in state we use useState hook
 For making any change on screen after load we need to re-render that page or we can say to make any dynamic change on page we need to re-render that page after making change. To re-render that page we use useState() hook.
+Never create useState outside the component because we are using useState as a local variable
+Never create useState inside a function of component or in conditional block
+Always  create at top inside the component function
 
-useEffect - useEffect will take two arrguments first will be call back function and second will be dependent array. useEffect will be render only after all component render.
+useEffect - 
+useEffect will take two arrguments first will be call back function and second will be dependent array. useEffect will be render only after all component render.
+useEffect(()=>{console.log("Hello")})  -- If we don't add dependence array then useEffect will render on every time
+useEffect(()=>{console.log("Hello")}, [])  -- If we add empty array then it will only only on initial render
+useEffect(()=> {console.log("Hello")}, [btnClicked])  -- If we add anything in dependency array then it will call only on change in that dependency array variable
 
 We have two approach for render 
 1) Loads => API (wait for call) => Render
@@ -60,3 +66,36 @@ Accept-Control-Allow-Origin  -- It will ad the detils of restricted URL or not
 Accept-Control-Allow-Method  -- It will ad the detils of restricted Method name like POST, GET
 After that 1st origin will send the request
 It is not happen to all the URL where it will send the Preflight data
+
+Routing-
+npm react-router-dom install for Routing
+createBrowserRouter will be import from react-router-dom we use for adding the path and element to route the file
+e.g. const appRoute = createBrowserRouter([
+    {
+        path: '/',
+        element: <PageName/>,
+        errorElement: <ErrorPage/>
+    },
+    {
+        path: '/about',
+        element: <PageName/>,
+        errorElement: <ErrorPage/>
+    }
+])
+
+and for render we will import RouterProvider from react-router-dom
+
+root.render(<RouterProvider router={appRoute}/>)
+
+
+Outlet -
+we use Outlet from react-router-dom which will help to render only the container body and fixed the header i.e. we can achieve dynamic webpage by using Outlet
+
+Link - 
+Instead of anchor tag <a/> we are using Link which will page our application single page application.
+<a/> refresh the page on every request where as Link will not refresh page.
+React is keeping all the track of link.
+
+Dynamic path - 
+For writing the dynamic path or URL we are using /: where we are getting value from URL and changing the data accordingly
+e.g. path: '/resturantMeanu/:resId'
